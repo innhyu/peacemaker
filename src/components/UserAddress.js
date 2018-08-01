@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Input, InputGroup, InputGroupAddon} from "reactstrap";
+import { connect } from "react-redux";
+import { Input, InputGroup, InputGroupAddon } from "reactstrap";
 
 import Map from "./Map";
 import Search from "./Search";
-import { connect } from "react-redux";
+import SearchResult from "./SearchResult";
 
 class UserAddress extends Component {
     constructor(props) {
@@ -33,8 +34,6 @@ class UserAddress extends Component {
     }
 
     render() {
-        console.log(this.props.keyword);
-
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
@@ -44,6 +43,7 @@ class UserAddress extends Component {
                             <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
                         </InputGroup>
                     </form>
+                    <SearchResult resultArray={[1,2,3]}/>
                     <Search keyword={this.state.keyword}/>
                     <Map style={styles.mapContainer}/>
                 </div>
