@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { createStore, applyMiddleware } from 'redux';
+import {Provider} from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import reducer from './store/reducer';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+
+ReactDOM.render(
+    <Provider store={applyMiddleware(createStore(reducer))}>
+        <App />
+    </Provider>
+    , document.getElementById('root'));
 registerServiceWorker();
