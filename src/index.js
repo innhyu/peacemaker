@@ -9,8 +9,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+
 ReactDOM.render(
-    <Provider store={applyMiddleware(createStore(reducer))}>
+    <Provider store={createStoreWithMiddleware(reducer)}>
         <App />
     </Provider>
     , document.getElementById('root'));

@@ -3,8 +3,9 @@ import {Input, InputGroup, InputGroupAddon} from "reactstrap";
 
 import Map from "./Map";
 import Search from "./Search";
+import { connect } from "react-redux";
 
-export default class UserAddress extends Component {
+class UserAddress extends Component {
     constructor(props) {
         super(props);
 
@@ -32,6 +33,8 @@ export default class UserAddress extends Component {
     }
 
     render() {
+        console.log(this.props.keyword);
+
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
@@ -71,3 +74,11 @@ const styles = {
     }
 
 };
+
+function mapStateToProps(state){
+    return{
+        keyword: state.keyword
+    }
+}
+
+export default connect(mapStateToProps)(UserAddress);
