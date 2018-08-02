@@ -12,7 +12,9 @@ class Search extends Component{
 
         this.state = {
             search: null
-        }
+        };
+
+        this.callback = this.callback.bind(this);
     }
 
     componentDidMount(){
@@ -29,9 +31,10 @@ class Search extends Component{
     }
 
     callback(locations, status, pagination){
-        console.log(a);
-        console.log(c);
-        console.log(b);
+        this.props.searchSuccess(locations);
+        console.log(locations);
+        console.log(status);
+        console.log(pagination);
     }
 
     render(){
@@ -48,9 +51,7 @@ Search.propTypes = {
 };
 
 function mapDispatchToProps(dispatch){
-    return {
-        searchSuccess: bindActionCreators(searchSuccess, dispatch)
-    }
+    return bindActionCreators({searchSuccess: searchSuccess}, dispatch);
 }
 
-export default connect(mapDispatchToProps)(Search)
+export default connect(null, mapDispatchToProps)(Search)

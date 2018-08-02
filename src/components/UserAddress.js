@@ -34,6 +34,8 @@ class UserAddress extends Component {
     }
 
     render() {
+
+        console.log(this.props);
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
@@ -43,7 +45,7 @@ class UserAddress extends Component {
                             <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
                         </InputGroup>
                     </form>
-                    <SearchResult resultArray={[1,2,3]}/>
+                    <SearchResult/>
                     <Search keyword={this.state.keyword}/>
                     <Map style={styles.mapContainer}/>
                 </div>
@@ -75,9 +77,10 @@ const styles = {
 
 };
 
-function mapStateToProps(state){
+function mapStateToProps({keyword, searchResult}){
     return{
-        keyword: state.keyword
+        ...keyword,
+        ...searchResult
     }
 }
 
