@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class Search extends Component{
+import { searchSuccess } from "../store/reducer_search";
+
+class Search extends Component{
 
     constructor(props){
         super(props);
@@ -43,3 +47,10 @@ Search.propTypes = {
     keyword: PropTypes.string.isRequired
 };
 
+function mapDispatchToProps(dispatch){
+    return {
+        searchSuccess: bindActionCreators(searchSuccess, dispatch)
+    }
+}
+
+export default connect(mapDispatchToProps)(Search)

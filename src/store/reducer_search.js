@@ -1,4 +1,4 @@
-export const ActionSearch = (searchResult) => {
+export const searchSuccess = (searchResult) => {
     return {
         type: 'SEARCH_SUCCESS',
         payload: searchResult
