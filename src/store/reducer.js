@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import KeywordReducer from './reducer_keyword';
+import { ReducerSearch } from './reducer_search';
 
 const rootReducers = combineReducers({
-    keyword: KeywordReducer
+    keyword: KeywordReducer,
+    searchResult: ReducerSearch
 });
 
 export default rootReducers;

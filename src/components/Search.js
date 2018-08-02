@@ -24,10 +24,10 @@ export default class Search extends Component{
         }
     }
 
-    callback(a,b,c){
+    callback(locations, status, pagination){
         console.log(a);
-        console.log(b);
         console.log(c);
+        console.log(b);
     }
 
     render(){
