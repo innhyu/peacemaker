@@ -45,7 +45,7 @@ class UserAddress extends Component {
                             <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
                         </InputGroup>
                     </form>
-                    <SearchResult/>
+                    <SearchResult searchResult={this.props.searchResult}/>
                     <Search keyword={this.state.keyword}/>
                     <Map style={styles.mapContainer}/>
                 </div>

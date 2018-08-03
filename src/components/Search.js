@@ -31,10 +31,12 @@ class Search extends Component{
     }
 
     callback(locations, status, pagination){
-        this.props.searchSuccess(locations);
-        console.log(locations);
-        console.log(status);
-        console.log(pagination);
+        if(status === window.daum.maps.services.Status.OK){
+            this.props.searchSuccess({locations, pagination});
+        }
+        else{
+            // Do something with failure
+        }
     }
 
     render(){
