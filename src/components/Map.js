@@ -17,11 +17,11 @@ export default class Map extends Component {
             center: new window.daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
             level: 4 //지도의 레벨(확대, 축소 정도)
         };
-        // const map = new window.daum.maps.Map(container, options);
+        const map = new window.daum.maps.Map(container, options);
 
-        // this.setState({
-        //     map: map
-        // });
+        this.setState({
+            map: map
+        });
     }
 
     render() {

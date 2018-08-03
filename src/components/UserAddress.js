@@ -40,14 +40,16 @@ class UserAddress extends Component {
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
                     <form onSubmit={this.handleSubmit}>
-                        <InputGroup style={styles.smallContainer}>
+                        <InputGroup style={styles.inputContainer}>
                             <InputGroupAddon addonType="prepend">주소</InputGroupAddon>
                             <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
                         </InputGroup>
                     </form>
                     <SearchResult searchResult={this.props.searchResult}/>
                     <Search keyword={this.state.keyword}/>
-                    <Map style={styles.mapContainer}/>
+                    <div style={styles.mapContainer}>
+                        <Map style={styles.map}/>
+                    </div>
                 </div>
             </div>
         )
@@ -58,7 +60,6 @@ class UserAddress extends Component {
 const styles = {
     container: {
         padding: 30,
-        height: 600,
     },
     innerContainer: {
         padding: 30,
@@ -66,13 +67,17 @@ const styles = {
         height: '100%',
         background: '#6ECBFF',
     },
-    smallContainer: {
+    inputContainer: {
         // flex: 0.2
     },
-    mapContainer: {
-        marginTop: '20%',
+    mapContainer:{
+        marginTop: 30,
         width: '100%',
-        height: '70%'
+        height: 500,
+    },
+    map: {
+        width: '100%',
+        height: '100%'
     }
 
 };

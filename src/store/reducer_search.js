@@ -1,9 +1,10 @@
 const baseState = {
-    searchResult: {locations: [
-        {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
-        {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
-        {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"}],
-        pagination: 'hi'}
+    // searchResult: {locations: [
+    //     {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
+    //     {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
+    //     {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"}],
+    //     pagination: 'hi'}
+    searchResult: null
 };
 
 export const searchSuccess = (searchResult) => {
