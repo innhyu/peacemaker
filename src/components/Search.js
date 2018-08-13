@@ -38,7 +38,9 @@ export default class Search extends Component {
     callback(locations, status, pagination) {
         if (status === window.daum.maps.services.Status.OK) {
             console.log("Search: Keyword Search Success");
-            this.props.searchSuccess({locations, pagination});
+            this.setState({
+                searchResult: {locations, pagination}
+            });
         }
         else {
             console.log("Search: Keyword Search Failure");
