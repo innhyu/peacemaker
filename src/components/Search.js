@@ -23,8 +23,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        // const search = new window.daum.maps.services.Places();
-        const search = null;
+        const search = new window.daum.maps.services.Places();
         this.setState({
             search: search
         })
