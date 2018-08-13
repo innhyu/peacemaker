@@ -40,6 +40,7 @@ class Map extends Component {
     }
 
     render() {
+
         return (
             <div id={this.state.id} style={this.props.style}/>
         );
@@ -52,15 +53,13 @@ Map.propTypes = {
 };
 
 function mapStateToProps({ maps }){
-    return {
-        map: maps.find(map => map.id === this.state.id)
-    }
+    return { ...maps };
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
         mapLoad: MapLoad
-    }, dispatch)
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

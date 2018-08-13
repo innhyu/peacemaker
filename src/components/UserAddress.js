@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
 import Search from "./Search";
 import Map from "./Map";
 
-class UserAddress extends Component {
+export default class UserAddress extends Component {
     constructor(props) {
         super(props);
     }
@@ -52,9 +51,3 @@ UserAddress.propTypes = {
     // The unique identifying number for this particular instance
     userNumber: PropTypes.number.isRequired
 };
-
-function mapStateToProps(){
-    return null;
-}
-
-export default connect(mapStateToProps)(UserAddress);

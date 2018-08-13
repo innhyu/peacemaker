@@ -2,7 +2,7 @@ import cloneDeep from 'lodash.clonedeep';
 
 function baseState() {
     return {
-        maps: null
+        maps: {}
     }
 }
 
@@ -29,7 +29,6 @@ export const ReducerMap = (state = baseState(), action) => {
          */
         case 'MAP_CHANGE':
             console.log("CHANGING MAP COORDINATES SUCCESSFULLY");
-            console.log(action.payload);
             return {
                 ...state
             };
