@@ -4,7 +4,7 @@ import {Input, InputGroup, InputGroupAddon} from "reactstrap";
 import SearchResult from "./SearchResult";
 
 /** TODO Remove sample console.logs and actually do work; Good for now **/
-class Search extends Component {
+export default class Search extends Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +12,11 @@ class Search extends Component {
         this.state = {
             search: null,
             keyword: '',
-            searchResult: {}
+            searchResult: {locations: [
+                    {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
+                    {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
+                    {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"}],
+                pagination: 'hi'}
         };
 
         this.callback = this.callback.bind(this);
@@ -23,6 +27,7 @@ class Search extends Component {
 
     componentDidMount() {
         // const search = new window.daum.maps.services.Places();
+        const search = null;
         this.setState({
             search: search
         })
