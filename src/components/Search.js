@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Input, InputGroup, InputGroupAddon } from "reactstrap";
@@ -13,23 +12,28 @@ class Search extends Component{
         super(props);
 
         this.state = {
-            search: null
+            search: null,
+            keyword: ''
         };
 
         this.callback = this.callback.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     componentDidMount(){
-        const search = new window.daum.maps.services.Places();
+        // const search = new window.daum.maps.services.Places();
+        const search = null;
         this.setState({
             search: search
         })
     }
 
     componentDidUpdate(){
-        if(this.props.keyword.length > 1){
-            console.log("Search: Keyword Searching with " + this.props.keyword);
-            this.state.search.keywordSearch(this.props.keyword, this.callback)
+        if(this.state.keyword.length > 1){
+            console.log("Search: Keyword Searching with " + this.state.keyword);
+            this.state.search.keywordSearch(this.state.keyword, this.callback)
         }
     }
 
@@ -41,6 +45,21 @@ class Search extends Component{
         else{
             console.log("Search: Keyword Search Failure");
             // Do something with failure
+        }
+    }
+
+    handleChange(evt) {
+        this.setState({
+            input: evt.target.value
+        });
+    }
+
+    handleSubmit(evt) {
+        evt.preventDefault();
+        const keyword = this.state.input;
+        if(keyword.length > 1){
+            const search = new window.daum.maps.services.Places();
+            search.keywordSearch(keyword, this.callback);
         }
     }
 
@@ -56,11 +75,6 @@ class Search extends Component{
     }
 
 }
-
-Search.propTypes = {
-    // Keyword to search with
-    keyword: PropTypes.string.isRequired
-};
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({searchSuccess: searchSuccess}, dispatch);

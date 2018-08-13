@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import { Input, InputGroup, InputGroupAddon } from "reactstrap";
 import PropTypes from 'prop-types';
 
 import Map from "./Map";
@@ -10,15 +9,6 @@ import SearchResult from "./SearchResult";
 class UserAddress extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            input: '',
-            searchResults: {}
-        };
-
-        // Binder required because I need to bind 'this' and use evt at the same time.
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(evt) {
@@ -28,7 +18,6 @@ class UserAddress extends Component {
     }
 
     handleSubmit(evt) {
-        console.log("Fired!");
         evt.preventDefault();
         const keyword = this.state.input;
         if(keyword.length > 1){
@@ -54,16 +43,11 @@ class UserAddress extends Component {
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
-                    <form onSubmit={this.handleSubmit}>
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">주소</InputGroupAddon>
-                            <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
-                        </InputGroup>
-                    </form>
-                    <SearchResult searchResult={this.state.searchResults}/>
-                    <div style={styles.mapContainer}>
-                        <Map userNumber={this.props.userNumber} style={styles.map}/>
-                    </div>
+                    <Search />
+                    {/*<SearchResult searchResult={this.state.searchResults}/>*/}
+                    {/*<div style={styles.mapContainer}>*/}
+                        {/*<Map userNumber={this.props.userNumber} style={styles.map}/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         )
