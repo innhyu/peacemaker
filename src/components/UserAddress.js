@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
 import Search from "./Search";
+import Map from "./Map";
 
 class UserAddress extends Component {
     constructor(props) {
@@ -15,9 +16,9 @@ class UserAddress extends Component {
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
                     <Search />
-                    {/*<div style={styles.mapContainer}>*/}
-                        {/*<Map userNumber={this.props.userNumber} style={styles.map}/>*/}
-                    {/*</div>*/}
+                    <div style={styles.mapContainer}>
+                        <Map userNumber={this.props.userNumber} style={styles.map}/>
+                    </div>
                 </div>
             </div>
         )
