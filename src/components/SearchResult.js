@@ -9,11 +9,11 @@ import { MapChange } from '../store/reducer_map';
 class SearchResult extends Component {
 
     render(){
-        console.log(this.props.searchResult);
+        // console.log(this.props.searchResult);
 
         const searchResultItem = this.props.searchResult && this.props.searchResult.locations.map((location) =>
             (
-            <ListGroupItem key={location.id} style={styles.card} onClick={this.props.showOnMap(location.x, location.y)}>
+            <ListGroupItem key={location.id} style={styles.card} onClick={() => this.props.showOnMap(location.x, location.y)}>
                 <ListGroupItemHeading style={styles.mainText}>{location.place_name}</ListGroupItemHeading>
                 <ListGroupItemText style={styles.subText}>{location.address_name}</ListGroupItemText>
                 <ListGroupItemText style={styles.subText}>{location.road_address_name}</ListGroupItemText>
