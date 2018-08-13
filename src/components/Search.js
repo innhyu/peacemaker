@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Input, InputGroup, InputGroupAddon } from "reactstrap";
 
 import { searchSuccess } from "../store/reducer_search";
 
@@ -26,22 +27,30 @@ class Search extends Component{
 
     componentDidUpdate(){
         if(this.props.keyword.length > 1){
+            console.log("Search: Keyword Searching with " + this.props.keyword);
             this.state.search.keywordSearch(this.props.keyword, this.callback)
         }
     }
 
     callback(locations, status, pagination){
         if(status === window.daum.maps.services.Status.OK){
-            this.props.searchSuccess({locations, pagination});
+            console.log("Search: Keyword Search Success");
+            // this.props.searchSuccess({locations, pagination});
         }
         else{
+            console.log("Search: Keyword Search Failure");
             // Do something with failure
         }
     }
 
     render(){
         return (
-            <div></div>
+            <form onSubmit={this.handleSubmit}>
+                <InputGroup>
+                    <InputGroupAddon addonType="prepend">주소</InputGroupAddon>
+                    <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
+                </InputGroup>
+            </form>
         )
     }
 
