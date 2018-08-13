@@ -8,15 +8,15 @@ function baseState() {
 
 export const MapLoad = (id) => {
     return {
-        type: 'MAP_LOAD',
-        payload: id
+        type: 'MAP_CHANGE',
+        payload: {id: id, x: 33.450701, y: 126.570667}
     }
 };
 
-export const MapChange = (x, y) => {
+export const MapChange = (id, x, y) => {
     return {
         type: 'MAP_CHANGE',
-        payload: {x, y}
+        payload: {id: id, x, y}
     }
 };
 
@@ -25,22 +25,13 @@ export const ReducerMap = (state = baseState(), action) => {
     switch(action.type){
 
         /**
-         * When the map's coordinate has changed
+         * When the map's coordinate has changed; also used for initiating
          */
         case 'MAP_CHANGE':
             console.log("CHANGING MAP COORDINATES SUCCESSFULLY");
-            return {
-                ...state
-            };
-
-        /**
-         * When a map has been loaded
-         */
-        case 'MAP_LOAD':
-            console.log("LOADING MAP SUCCESSFUL");
             const maps = cloneDeep(state.maps);
-            maps[action.payload] = {x: 33.450701, y: 126.570667};
-            return{
+            maps[action.payload.id] = {x: action.payload.x, y: action.payload.y};
+            return {
                 ...state,
                 maps
             };
