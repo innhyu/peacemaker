@@ -6,6 +6,7 @@ import { Input, InputGroup, InputGroupAddon } from "reactstrap";
 
 import { searchSuccess } from "../store/reducer_search";
 
+/** TODO Remove sample console.logs and actually do work; Good for now **/
 class Search extends Component{
 
     constructor(props){
