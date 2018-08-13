@@ -22,7 +22,6 @@ export default class SearchResult extends Component {
             // More than 4 cards, then it will overflow.
             const scrollBar = this.props.searchResult.locations.length > 4 ? {...styles.container, ...styles.scrollerActive} : styles.container ;
 
-            console.log(scrollBar);
             return (
                 <div>
                     <div style={scrollBar}>

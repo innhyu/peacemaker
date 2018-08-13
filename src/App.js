@@ -10,10 +10,10 @@ export default class App extends Component {
         <Container>
           <Row>
             <Col xs='12' md={{size: 6}}>
-              <UserAddress/>
+              <UserAddress userNumber={1}/>
             </Col>
             <Col xs='12' md={{size: 6}}>
-              <UserAddress/>
+              <UserAddress userNumber={2}/>
             </Col>
           </Row>
         </Container>

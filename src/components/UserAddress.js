@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import { Input, InputGroup, InputGroupAddon } from "reactstrap";
+import PropTypes from 'prop-types';
 
 import Map from "./Map";
 import Search from "./Search";
@@ -12,7 +13,7 @@ class UserAddress extends Component {
 
         this.state = {
             input: '',
-            keyword: ''
+            searchResults: {}
         };
 
         // Binder required because I need to bind 'this' and use evt at the same time.
@@ -27,28 +28,41 @@ class UserAddress extends Component {
     }
 
     handleSubmit(evt) {
+        console.log("Fired!");
         evt.preventDefault();
-        this.setState({
-            keyword: this.state.input
-        })
+        const keyword = this.state.input;
+        if(keyword.length > 1){
+            const search = new window.daum.maps.services.Places();
+            search.keywordSearch(keyword, this.callback);
+        }
     }
+
+    callback(locations, status, pagination){
+        if(status === window.daum.maps.services.Status.OK){
+            this.setState({
+                searchResults: this.state.searchResults[this.props.userNumber] = {locations,pagination}
+            });
+        }
+        else{
+            // Do something with failure
+        }
+    }
+
 
     render() {
 
-        console.log(this.props);
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
                     <form onSubmit={this.handleSubmit}>
-                        <InputGroup style={styles.inputContainer}>
+                        <InputGroup>
                             <InputGroupAddon addonType="prepend">주소</InputGroupAddon>
                             <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
                         </InputGroup>
                     </form>
-                    <SearchResult searchResult={this.props.searchResult}/>
-                    <Search keyword={this.state.keyword}/>
+                    <SearchResult searchResult={this.state.searchResults}/>
                     <div style={styles.mapContainer}>
-                        <Map style={styles.map}/>
+                        <Map userNumber={this.props.userNumber} style={styles.map}/>
                     </div>
                 </div>
             </div>
@@ -67,9 +81,6 @@ const styles = {
         height: '100%',
         background: '#6ECBFF',
     },
-    inputContainer: {
-        // flex: 0.2
-    },
     mapContainer:{
         marginTop: 30,
         width: '100%',
@@ -80,6 +91,11 @@ const styles = {
         height: '100%'
     }
 
+};
+
+UserAddress.propTypes = {
+    // The unique identifying number for this particular instance
+    userNumber: PropTypes.number.isRequired
 };
 
 function mapStateToProps({keyword, searchResult}){
