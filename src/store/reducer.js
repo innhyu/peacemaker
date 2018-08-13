@@ -5,7 +5,9 @@ import { ReducerSearch } from './reducer_search';
 
 const rootReducers = combineReducers({
     keyword: KeywordReducer,
-    searchResult: ReducerSearch
+    searchResult: ReducerSearch,
+    maps: ReducerMap
+
 });
 
 export default rootReducers;

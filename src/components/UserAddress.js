@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
 import Search from "./Search";
-import SearchResult from "./SearchResult";
 
 class UserAddress extends Component {
     constructor(props) {
