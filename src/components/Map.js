@@ -39,6 +39,13 @@ class Map extends Component {
         });
     }
 
+    componentDidUpdate() {
+        const selfMap = this.props.maps[this.state.id];
+        const x = selfMap.x;
+        const y = selfMap.y;
+        this.state.map.setCenter(new window.daum.maps.LatLng(x, y));
+    }
+
     render() {
 
         return (

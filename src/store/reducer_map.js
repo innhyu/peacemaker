@@ -39,7 +39,7 @@ export const ReducerMap = (state = baseState(), action) => {
         case 'MAP_LOAD':
             console.log("LOADING MAP SUCCESSFUL");
             const maps = cloneDeep(state.maps);
-            maps[action.payload] = {x: 0, y: 0};
+            maps[action.payload] = {x: 33.450701, y: 126.570667};
             return{
                 ...state,
                 maps
