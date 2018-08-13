@@ -1,3 +1,5 @@
+import cloneDeep from 'lodash.clonedeep';
+
 function baseState() {
     return {
         maps: null
@@ -29,8 +31,7 @@ export const ReducerMap = (state = baseState(), action) => {
             console.log("CHANGING MAP COORDINATES SUCCESSFULLY");
             console.log(action.payload);
             return {
-
-
+                ...state
             };
 
         /**
@@ -38,8 +39,11 @@ export const ReducerMap = (state = baseState(), action) => {
          */
         case 'MAP_LOAD':
             console.log("LOADING MAP SUCCESSFUL");
+            const maps = cloneDeep(state.maps);
+            maps[action.payload] = {x: 0, y: 0};
             return{
-
+                ...state,
+                maps
             };
 
         default:

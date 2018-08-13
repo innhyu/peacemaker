@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from ' react-redux';
+import { connect } from 'react-redux';
 import { uniqueId } from 'lodash';
 import PropTypes from 'prop-types';
 
 import { MapLoad } from '../store/reducer_map';
 
-export default class Map extends Component {
+class Map extends Component {
     constructor(props) {
         super(props);
 
@@ -51,9 +51,9 @@ Map.propTypes = {
     mapLoad: PropTypes.func.isRequired
 };
 
-function mapStateToProps({ map }){
+function mapStateToProps({ maps }){
     return {
-        ...map
+        map: maps.find(map => map.id === this.state.id)
     }
 }
 
