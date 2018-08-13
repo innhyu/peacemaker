@@ -12,11 +12,7 @@ export default class Search extends Component {
         this.state = {
             search: null,
             keyword: '',
-            searchResult: {locations: [
-                    {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
-                    {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"},
-                    {place_name: "abc", address_name: "example address 1", road_address_name: "example address 2"}],
-                pagination: 'hi'}
+            searchResult: null
         };
 
         this.callback = this.callback.bind(this);
@@ -26,8 +22,7 @@ export default class Search extends Component {
     }
 
     componentDidMount() {
-        // const search = new window.daum.maps.services.Places();
-        const search = null;
+        const search = new window.daum.maps.services.Places();
         this.setState({
             search: search
         })
@@ -36,14 +31,14 @@ export default class Search extends Component {
     componentDidUpdate() {
         if (this.state.keyword.length > 1) {
             console.log("Search: Keyword Searching with " + this.state.keyword);
-            // this.state.search.keywordSearch(this.state.keyword, this.callback)
+            this.state.search.keywordSearch(this.state.keyword, this.callback)
         }
     }
 
     callback(locations, status, pagination) {
         if (status === window.daum.maps.services.Status.OK) {
             console.log("Search: Keyword Search Success");
-            // this.props.searchSuccess({locations, pagination});
+            this.props.searchSuccess({locations, pagination});
         }
         else {
             console.log("Search: Keyword Search Failure");
@@ -62,8 +57,8 @@ export default class Search extends Component {
         const keyword = this.state.input;
         if (keyword.length > 1) {
             console.log("Handling Form Submit");
-            // const search = new window.daum.maps.services.Places();
-            // search.keywordSearch(keyword, this.callback);
+            const search = new window.daum.maps.services.Places();
+            search.keywordSearch(keyword, this.callback);
         }
     }
 
