@@ -23,7 +23,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        const search = new window.daum.maps.services.Places();
+        // const search = new window.daum.maps.services.Places();
         this.setState({
             search: search
         })
@@ -32,7 +32,7 @@ class Search extends Component{
     componentDidUpdate(){
         if(this.state.keyword.length > 1){
             console.log("Search: Keyword Searching with " + this.state.keyword);
-            this.state.search.keywordSearch(this.state.keyword, this.callback)
+            // this.state.search.keywordSearch(this.state.keyword, this.callback)
         }
     }
 
@@ -57,8 +57,9 @@ class Search extends Component{
         evt.preventDefault();
         const keyword = this.state.input;
         if(keyword.length > 1){
-            const search = new window.daum.maps.services.Places();
-            search.keywordSearch(keyword, this.callback);
+            console.log("Handling Form Submit");
+            // const search = new window.daum.maps.services.Places();
+            // search.keywordSearch(keyword, this.callback);
         }
     }
 
