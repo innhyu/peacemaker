@@ -16,7 +16,6 @@ class UserAddress extends Component {
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
                     <Search />
-                    {/*<SearchResult searchResult={this.state.searchResults}/>*/}
                     {/*<div style={styles.mapContainer}>*/}
                         {/*<Map userNumber={this.props.userNumber} style={styles.map}/>*/}
                     {/*</div>*/}
