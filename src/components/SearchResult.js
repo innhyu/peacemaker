@@ -74,7 +74,9 @@ const styles = {
 
 SearchResult.propTypes = {
     // The result array the Search Result will render; Can be empty when there's no result.
-    searchResult: PropTypes.object
+    searchResult: PropTypes.object,
+    // Store - the function to run when an result item is clicked; changes the actual map location
+    showOnMap: PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch){

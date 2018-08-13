@@ -53,11 +53,8 @@ UserAddress.propTypes = {
     userNumber: PropTypes.number.isRequired
 };
 
-function mapStateToProps({keyword, searchResult}){
-    return{
-        ...keyword,
-        ...searchResult
-    }
+function mapStateToProps(){
+    return null;
 }
 
 export default connect(mapStateToProps)(UserAddress);

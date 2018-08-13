@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from ' react-redux';
 import { uniqueId } from 'lodash';
+import PropTypes from 'prop-types';
+
+import { MapLoad } from '../store/reducer_map';
 
 export default class Map extends Component {
     constructor(props) {
@@ -8,10 +13,20 @@ export default class Map extends Component {
         this.state = {
             id: uniqueId(),
             map: null
-        }
+        };
+
+        this.setupMap = this.setupMap.bind(this);
     }
 
     componentDidMount() {
+        this.setupMap();
+        this.props.mapLoad(this.state.id);
+    }
+
+    /**
+     * Function that sets up the map div and saves the actual object to the state
+     */
+    setupMap() {
         const container = document.getElementById(this.state.id);
         const options = { //지도를 생성할 때 필요한 기본 옵션
             center: new window.daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -30,3 +45,22 @@ export default class Map extends Component {
         );
     }
 }
+
+Map.propTypes = {
+    // Store - Function to run when the map component has been mounted
+    mapLoad: PropTypes.func.isRequired
+};
+
+function mapStateToProps({ map }){
+    return {
+        ...map
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        mapLoad: MapLoad
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);
