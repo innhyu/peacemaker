@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 
 import Search from "./Search";
 import Map from "./Map";
@@ -7,6 +7,10 @@ import Map from "./Map";
 export default class UserAddress extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            id: uniqueId()
+        }
     }
 
     render() {
@@ -14,9 +18,9 @@ export default class UserAddress extends Component {
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
-                    <Search />
+                    <Search userId={this.state.id} />
                     <div style={styles.mapContainer}>
-                        <Map userNumber={this.props.userNumber} style={styles.map}/>
+                        <Map userId={this.state.id} style={styles.map}/>
                     </div>
                 </div>
             </div>
@@ -45,9 +49,4 @@ const styles = {
         height: '100%'
     }
 
-};
-
-UserAddress.propTypes = {
-    // The unique identifying number for this particular instance
-    userNumber: PropTypes.number.isRequired
 };

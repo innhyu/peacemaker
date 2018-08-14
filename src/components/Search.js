@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Input, InputGroup, InputGroupAddon} from "reactstrap";
+import PropTypes from 'prop-types';
 
 import SearchResult from "./SearchResult";
 
@@ -73,9 +74,14 @@ export default class Search extends Component {
                         <Input onChange={this.handleChange} placeholder="예) 서울시 상암동"/>
                     </InputGroup>
                 </form>
-                <SearchResult searchResult={this.state.searchResult}/>
+                <SearchResult userId={this.props.userId} searchResult={this.state.searchResult}/>
             </div>
         )
     }
 
 }
+
+Search.propTypes = {
+    // Unique Id of the user
+    userId: PropTypes.string.isRequired
+};
