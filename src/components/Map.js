@@ -54,19 +54,21 @@ class Map extends Component {
      */
     moveMapAndMark = () => {
         const selfMap = this.props.maps[this.props.userId];
-        const x = selfMap.x;
-        const y = selfMap.y;
-        const coords = new window.daum.maps.LatLng(y, x);
-        const marker = new window.daum.maps.Marker({
-            position: coords
-        });
+        if(selfMap) {
+            const x = selfMap.x;
+            const y = selfMap.y;
+            const coords = new window.daum.maps.LatLng(y, x);
+            const marker = new window.daum.maps.Marker({
+                position: coords
+            });
 
-        this.state.map.setCenter(coords);
-        marker.setMap(this.state.map);
+            this.state.map.setCenter(coords);
+            marker.setMap(this.state.map);
 
-        this.setState({
-            marker: marker
-        });
+            this.setState({
+                marker: marker
+            });
+        }
     };
 
     render() {
