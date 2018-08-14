@@ -11,7 +11,8 @@ class Map extends Component {
         super(props);
 
         this.state = {
-            map: null
+            map: null,
+            yes: ''
         };
 
         this.setupMap = this.setupMap.bind(this);
@@ -36,17 +37,18 @@ class Map extends Component {
         this.setState({
             map: map
         });
+
     }
 
     componentDidUpdate() {
         const selfMap = this.props.maps[this.props.userId];
         const x = selfMap.x;
         const y = selfMap.y;
-        this.state.map.setCenter(new window.daum.maps.LatLng(x, y));
+        const coords = new window.daum.maps.LatLng(y, x);
+        this.state.map.setCenter(coords);
     }
 
     render() {
-
         return (
             <div id={this.props.userId} style={this.props.style}/>
         );

@@ -9,14 +9,14 @@ function baseState() {
 export const MapLoad = (id) => {
     return {
         type: 'MAP_CHANGE',
-        payload: {id: id, x: 33.450701, y: 126.570667}
+        payload: {id: id, x: 126.570667, y: 33.450701}
     }
 };
 
 export const MapChange = (id, x, y) => {
     return {
         type: 'MAP_CHANGE',
-        payload: {id: id, x, y}
+        payload: {id: id, x: parseFloat(x), y: parseFloat(y)}
     }
 };
 
