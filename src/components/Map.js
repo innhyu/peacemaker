@@ -12,7 +12,7 @@ class Map extends Component {
 
         this.state = {
             map: null,
-            yes: ''
+            marker: null
         };
 
         this.setupMap = this.setupMap.bind(this);
@@ -40,15 +40,40 @@ class Map extends Component {
 
     }
 
-    componentDidUpdate() {
+    /**
+     * Removes marker on map if it exists
+     */
+    removeMarker = () => {
+        if(this.state.marker){
+            this.state.marker.setMap(null);
+        }
+    };
+
+    /**
+     * Moves map's center location to newly updated, and set up a marker
+     */
+    moveMapAndMark = () => {
         const selfMap = this.props.maps[this.props.userId];
         const x = selfMap.x;
         const y = selfMap.y;
         const coords = new window.daum.maps.LatLng(y, x);
+        const marker = new window.daum.maps.Marker({
+            position: coords
+        });
+
         this.state.map.setCenter(coords);
-    }
+        marker.setMap(this.state.map);
+
+        this.setState({
+            marker: marker
+        });
+    };
 
     render() {
+
+        this.removeMarker();
+        this.moveMapAndMark();
+
         return (
             <div id={this.props.userId} style={this.props.style}/>
         );
