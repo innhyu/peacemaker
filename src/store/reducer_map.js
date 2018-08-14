@@ -6,6 +6,11 @@ function baseState() {
     }
 }
 
+/**
+ * Function that loads the map to the maps store object, with initial location set to Kakao.
+ *
+ * @param id - the id of the map div
+ */
 export const MapLoad = (id) => {
     return {
         type: 'MAP_CHANGE',
@@ -13,6 +18,13 @@ export const MapLoad = (id) => {
     }
 };
 
+/**
+ * Function that changes the locations shown on the map based on the x and y coordinate
+ *
+ * @param id - the id of the map div
+ * @param x - x coordinate of the desired location
+ * @param y - y coordinate of the desired location
+ */
 export const MapChange = (id, x, y) => {
     return {
         type: 'MAP_CHANGE',
