@@ -32,7 +32,7 @@ class Map extends Component {
     };
 
     /**
-     * Function that sets up the map div and saves the actual object to the state
+     * Function that sets up the map div / marker and saves the actual object to the state
      */
     setupMapAndMarker = () => {
         const container = document.getElementById(this.props.userId);
@@ -57,7 +57,7 @@ class Map extends Component {
     };
 
     /**
-     * Moves map's center location to newly updated, and set up a marker
+     * Moves map's center location to newly updated, and updates marker location
      */
     moveMapAndMark = () => {
         const selfMap = this.props.maps[this.props.userId];
