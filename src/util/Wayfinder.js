@@ -36,21 +36,21 @@ export default class WayFinder {
     /**
      * Function that computes the x coordinate given lon / lat
      */
-    static xOf({lat, lon}){
+    static xOf({y: lat, x: lon}){
         return Math.cos(WayFinder.toRad(lat)) * Math.cos(WayFinder.toRad(lon));
     }
 
     /**
      * Function that computes the y coordinate given lon / lat
      */
-    static yOf({lat, lon}){
+    static yOf({y: lat, x: lon}){
         return Math.cos(WayFinder.toRad(lat)) * Math.sin(WayFinder.toRad(lon));
     }
 
     /**
      * Function that computes the z coordinate given lon / lat
      */
-    static zOf({lat}){
+    static zOf({y: lat}){
         return Math.sin(WayFinder.toRad(lat));
     }
 

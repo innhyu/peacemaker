@@ -1,8 +1,10 @@
 import cloneDeep from 'lodash.clonedeep';
+import WayFinder from '../util/Wayfinder';
 
 function baseState() {
     return {
-        maps: {}
+        maps: {},
+        midPoint: null
     }
 }
 
@@ -32,7 +34,18 @@ export const MapChange = (id, x, y) => {
     }
 };
 
+/**
+ * Function that prompts the midpoint to be calculated
+ */
+export const FindMidPoint = () => {
+    return {
+        type: 'FIND_MID_POINT'
+    }
+};
+
 export const ReducerMap = (state = baseState(), action) => {
+
+    let maps;
 
     switch(action.type){
 
@@ -41,11 +54,26 @@ export const ReducerMap = (state = baseState(), action) => {
          */
         case 'MAP_CHANGE':
             console.log("CHANGING MAP COORDINATES SUCCESSFULLY");
-            const maps = cloneDeep(state.maps);
+            maps = cloneDeep(state.maps);
             maps[action.payload.id] = {x: action.payload.x, y: action.payload.y};
             return {
                 ...state,
                 maps
+            };
+
+        /**
+         * Find the mid-point using the WayFinder util
+         */
+        case 'FIND_MID_POINT':
+            console.log("FINDING MIDPOINT");
+            maps = cloneDeep(state.maps);
+
+            console.log(Object.values(maps));
+            let g = WayFinder.midPoint(Object.values(maps));
+            console.log(g);
+            return {
+                ...state,
+
             };
 
         default:
