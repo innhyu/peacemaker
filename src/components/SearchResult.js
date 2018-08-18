@@ -9,8 +9,6 @@ import { mapChange } from '../store/reducer_map';
 class SearchResult extends Component {
 
     render(){
-        // console.log(this.props.searchResult);
-
         const searchResultItem = this.props.searchResult && this.props.searchResult.locations.map((location) =>
             (
             <ListGroupItem key={location.id} style={styles.card} onClick={() => this.props.showOnMap(this.props.userId, location.x, location.y)}>

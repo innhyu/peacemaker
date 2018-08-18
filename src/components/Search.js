@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import SearchResult from "./SearchResult";
 
-/** TODO Remove sample console.logs and actually do work; Good for now **/
 export default class Search extends Component {
 
     constructor(props) {
@@ -59,7 +58,6 @@ export default class Search extends Component {
         evt.preventDefault();
         const keyword = this.state.input;
         if (keyword.length > 1) {
-            console.log("Handling Form Submit");
             const search = new window.daum.maps.services.Places();
             search.keywordSearch(keyword, this.callback);
         }

@@ -34,8 +34,8 @@ class App extends Component {
     /**
      * Finds the midpoint and shows the midpoint map
      */
-    findMidpoint = () => {
-        this.props.findMidpoint();
+    findMidpoint = async () => {
+        await this.props.findMidpoint();
 
         // Searching some categorical stuff
 
@@ -44,7 +44,6 @@ class App extends Component {
 
         const callback = (result, status) => {
             if (status === window.daum.maps.services.Status.OK) {
-                console.log(result);
                 this.setState({
                     searchResult: {locations: result}
                 })
@@ -119,15 +118,12 @@ class App extends Component {
 
     render() {
 
-        console.log(this.state);
-        console.log(this.props);
-
         const midPointMap = (<Col style={styles.mapContainer} xs='12' md={{size: 12}}>
             <div id='midPoint' style={styles.midpointMap}/>
         </Col>);
 
         const resultArray = (<Col xs='12' md={{size: 12}}>
-            <SearchResult userId= {0} searchResult = {this.state.searchResult} />
+            <SearchResult userId='0' searchResult = {this.state.searchResult} />
         </Col>);
 
         const buttons = (<Col style={styles.buttons} xs='12' md={{size: 12}}>
