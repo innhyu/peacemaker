@@ -56,19 +56,27 @@ class App extends Component {
 
         const midpointMap = new window.daum.maps.Map(container, options);
 
+        // Creating new bound
+        const bounds = new window.daum.maps.LatLngBounds();
+
         // Creating markers
         Object.values(this.props.maps).forEach(map => {
+            let markerPosition = new window.daum.maps.LatLng(map.y, map.x);
             let marker = new window.daum.maps.Marker({
-                position: new window.daum.maps.LatLng(map.y, map.x),
+                position: markerPosition,
                 opacity: 0.3
             });
             marker.setMap(midpointMap);
+            bounds.extend(markerPosition);
         });
 
         let midMarker = new window.daum.maps.Marker({
             position: new window.daum.maps.LatLng(lat, lon)
         });
         midMarker.setMap(midpointMap);
+
+        // Extending map to show all markers
+        midpointMap.setBounds(bounds);
     };
 
     /**
