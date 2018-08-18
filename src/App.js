@@ -6,6 +6,7 @@ import {Container, Row, Col, Button} from 'reactstrap';
 import './App.css';
 import UserAddress from "./components/UserAddress";
 import {findMidpoint} from "./store/reducer_map";
+import SearchResult from "./components/SearchResult";
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
 
         this.state = {
             users: [],
+            searchResult: null,
             showMidpoint: false
         };
     }
@@ -34,6 +36,26 @@ class App extends Component {
      */
     findMidpoint = () => {
         this.props.findMidpoint();
+
+        // Searching some categorical stuff
+
+        const lat = this.props.midPoint.newLat;
+        const lon = this.props.midPoint.newLon;
+
+        const callback = (result, status) => {
+            if (status === window.daum.maps.services.Status.OK) {
+                console.log(result);
+                this.setState({
+                    searchResult: {locations: result}
+                })
+            }
+        };
+
+        const search = new window.daum.maps.services.Places();
+        search.categorySearch('CE7', callback, {
+            location: new window.daum.maps.LatLng(lat, lon)
+        });
+
         this.setState({
             showMidpoint: true
         });
@@ -64,7 +86,7 @@ class App extends Component {
             let markerPosition = new window.daum.maps.LatLng(map.y, map.x);
             let marker = new window.daum.maps.Marker({
                 position: markerPosition,
-                opacity: 0.3
+                opacity: 0.6
             });
             marker.setMap(midpointMap);
             bounds.extend(markerPosition);
@@ -97,8 +119,15 @@ class App extends Component {
 
     render() {
 
+        console.log(this.state);
+        console.log(this.props);
+
         const midPointMap = (<Col style={styles.mapContainer} xs='12' md={{size: 12}}>
             <div id='midPoint' style={styles.midpointMap}/>
+        </Col>);
+
+        const resultArray = (<Col xs='12' md={{size: 12}}>
+            <SearchResult userId= {0} searchResult = {this.state.searchResult} />
         </Col>);
 
         const buttons = (<Col style={styles.buttons} xs='12' md={{size: 12}}>
@@ -114,7 +143,7 @@ class App extends Component {
             <Container>
                 <Row>
                     {this.state.showMidpoint ? midPointMap : Object.values(this.state.users)}
-                    {!this.state.showMidpoint ? buttons: null}
+                    {!this.state.showMidpoint ? buttons: resultArray}
                 </Row>
             </Container>
         );
