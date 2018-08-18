@@ -27,7 +27,7 @@ export const MapLoad = (id) => {
  * @param x - x coordinate of the desired location
  * @param y - y coordinate of the desired location
  */
-export const MapChange = (id, x, y) => {
+export const mapChange = (id, x, y) => {
     return {
         type: 'MAP_CHANGE',
         payload: {id: id, x: parseFloat(x), y: parseFloat(y)}
@@ -37,7 +37,7 @@ export const MapChange = (id, x, y) => {
 /**
  * Function that prompts the midpoint to be calculated
  */
-export const FindMidPoint = () => {
+export const findMidpoint = () => {
     return {
         type: 'FIND_MID_POINT'
     }
@@ -66,13 +66,10 @@ export const ReducerMap = (state = baseState(), action) => {
          */
         case 'FIND_MID_POINT':
             console.log("FINDING MIDPOINT");
-            maps = cloneDeep(state.maps);
-
-            console.log(Object.values(maps));
-            let g = WayFinder.midPoint(Object.values(maps));
-            console.log(g);
+            const midpoint = WayFinder.midPoint(Object.values(state.maps));
             return {
                 ...state,
+                midpoint
 
             };
 

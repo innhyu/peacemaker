@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators }from 'redux';
 import {Container, Row, Col, Button} from 'reactstrap';
 
 import './App.css';
 import UserAddress from "./components/UserAddress";
+import { findMidpoint } from "./store/reducer_map";
 
-export default class App extends Component {
+class App extends Component {
 
 
 
@@ -19,7 +22,7 @@ export default class App extends Component {
                         <UserAddress/>
                     </Col>
                     <Col xs='12' md={{size: 12}}>
-                        <Button size='lg' color="secondary" onClick={() => {}}>Find Something</Button>
+                        <Button size='lg' color="secondary" onClick={() => this.props.findMidpoint()}>Find Something</Button>
                     </Col>
                 </Row>
             </Container>
@@ -27,3 +30,8 @@ export default class App extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({findMidpoint: findMidpoint}, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(App);

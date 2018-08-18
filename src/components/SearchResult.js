@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText} from "reactstrap";
 
-import { MapChange } from '../store/reducer_map';
+import { mapChange } from '../store/reducer_map';
 
 class SearchResult extends Component {
 
@@ -83,7 +83,7 @@ SearchResult.propTypes = {
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        showOnMap: MapChange
+        showOnMap: mapChange
     }, dispatch);
 }
 
