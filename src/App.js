@@ -23,6 +23,12 @@ class App extends Component {
         this.addUser();
     }
 
+    componentDidUpdate() {
+        if(this.state.showMidpoint){
+            this.buildMidpointMap();
+        }
+    }
+
     /**
      * Finds the midpoint and shows the midpoint map
      */
@@ -31,7 +37,6 @@ class App extends Component {
         this.setState({
             showMidpoint: true
         });
-        this.buildMidpointMap();
     };
 
     /**
@@ -60,7 +65,7 @@ class App extends Component {
             marker.setMap(midpointMap);
         });
 
-       let midMarker = new window.daum.maps.Marker({
+        let midMarker = new window.daum.maps.Marker({
             position: new window.daum.maps.LatLng(lat, lon)
         });
         midMarker.setMap(midpointMap);
@@ -84,19 +89,27 @@ class App extends Component {
 
     render() {
 
+        const midPointMap = (<Col style={styles.mapContainer} xs='12' md={{size: 12}}>
+            <div id='midPoint' style={styles.midpointMap}/>
+        </Col>);
+
         return (
             <Container>
                 <Row>
-                    {this.state.showMidpoint ? this.buildMidpointMap() : Object.values(this.state.users)}
-                    <Col style={styles.mapContainer} xs='12' md={{size: 12}}>
-                        <div id='midPoint' style={ styles.midpointMap }/>
-                    </Col>
-                    <Col style={styles.buttons} xs='12' md={{size: 12}}>
-                        <Button style={styles.button} size='lg' color="secondary" onClick={() => this.addUser()}>친구
-                            추가하기</Button>
-                        <Button style={styles.button} size='lg' color="primary" onClick={() => this.findMidpoint()}>중간지점
-                            찾기</Button>
-                    </Col>
+                    {this.state.showMidpoint ? midPointMap : Object.values(this.state.users)}
+
+                    {!this.state.showMidpoint
+                        ? (
+                            <Col style={styles.buttons} xs='12' md={{size: 12}}>
+                                <Button style={styles.button} size='lg' color="secondary"
+                                        onClick={() => this.addUser()}>친구
+                                    추가하기</Button>
+                                <Button style={styles.button} size='lg' color="primary"
+                                        onClick={() => this.findMidpoint()}>중간지점
+                                    찾기</Button>
+                            </Col>
+                        )
+                        : null}
                 </Row>
             </Container>
         );
