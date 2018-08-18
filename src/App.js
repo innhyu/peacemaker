@@ -24,7 +24,7 @@ class App extends Component {
     }
 
     componentDidUpdate() {
-        if(this.state.showMidpoint){
+        if (this.state.showMidpoint) {
             this.buildMidpointMap();
         }
     }
@@ -93,23 +93,20 @@ class App extends Component {
             <div id='midPoint' style={styles.midpointMap}/>
         </Col>);
 
+        const buttons = (<Col style={styles.buttons} xs='12' md={{size: 12}}>
+            <Button style={styles.button} size='lg' color="secondary"
+                    onClick={() => this.addUser()}>친구
+                추가하기</Button>
+            <Button style={styles.button} size='lg' color="primary"
+                    onClick={() => this.findMidpoint()}>중간지점
+                찾기</Button>
+        </Col>);
+
         return (
             <Container>
                 <Row>
                     {this.state.showMidpoint ? midPointMap : Object.values(this.state.users)}
-
-                    {!this.state.showMidpoint
-                        ? (
-                            <Col style={styles.buttons} xs='12' md={{size: 12}}>
-                                <Button style={styles.button} size='lg' color="secondary"
-                                        onClick={() => this.addUser()}>친구
-                                    추가하기</Button>
-                                <Button style={styles.button} size='lg' color="primary"
-                                        onClick={() => this.findMidpoint()}>중간지점
-                                    찾기</Button>
-                            </Col>
-                        )
-                        : null}
+                    {!this.state.showMidpoint ? buttons: null}
                 </Row>
             </Container>
         );
