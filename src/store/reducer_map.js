@@ -4,7 +4,7 @@ import WayFinder from '../util/Wayfinder';
 function baseState() {
     return {
         maps: {},
-        midPoint: null
+        midPoint: {}
     }
 }
 
@@ -66,11 +66,10 @@ export const ReducerMap = (state = baseState(), action) => {
          */
         case 'FIND_MID_POINT':
             console.log("FINDING MIDPOINT");
-            const midpoint = WayFinder.midPoint(Object.values(state.maps));
+            const midPoint = WayFinder.midPoint(Object.values(state.maps));
             return {
                 ...state,
-                midpoint
-
+                midPoint
             };
 
         default:
