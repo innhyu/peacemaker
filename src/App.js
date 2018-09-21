@@ -122,8 +122,11 @@ class App extends Component {
             <div id='midPoint' style={styles.midpointMap}/>
         </Col>);
 
-        const resultArray = (<Col xs='12' md={{size: 12}}>
+        const resultArrayWithResetButton = (<Col style={styles.buttons} xs='12' md={{size: 12}}>
             <SearchResult userId='0' searchResult = {this.state.searchResult} />
+            <Button style={styles.smallButton} size='lg' color="primary"
+                    onClick={() => this.findMidpoint()}>중간지점
+                찾기</Button>
         </Col>);
 
         const buttons = (<Col style={styles.buttons} xs='12' md={{size: 12}}>
@@ -139,7 +142,7 @@ class App extends Component {
             <Container>
                 <Row>
                     {this.state.showMidpoint ? midPointMap : Object.values(this.state.users)}
-                    {!this.state.showMidpoint ? buttons: resultArray}
+                    {!this.state.showMidpoint ? buttons: resultArrayWithResetButton}
                 </Row>
             </Container>
         );
@@ -154,6 +157,9 @@ const styles = {
     },
     button: {
         flex: 1
+    },
+    smallButton: {
+        flex: 0.3
     },
     mapContainer: {
         display: 'flex',

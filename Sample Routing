@@ -1,0 +1,43 @@
+{
+"ranking":1,
+"type":"BUS",
+"distance":{"value":3719,"text":"3.7km","html":"<b>3.7</b>km"},
+"time":{"value":1594,"text":"27분","html":"<b>27</b>분"},
+"walkingDistance":{"value":566,"text":"566m","html":"<b>566</b>m"},
+"walkingTime":{"value":548,"text":"9분","html":"<b>9</b>분"},
+"transfers":0,
+"fare":{"value":1200,"text":"1,200원","html":"<b>1,200</b>원"},
+"boundary":{"minX":504182.0,"minY":1110730.0,"maxX":506190.0,"maxY":1118100.0},
+"recommended":false,
+"shortestTime":false,
+"leastTransfer":false,
+"debug":{"totalCost":1868,"rankingCost":2108,"linkTime":1594,"intervalCost":240},
+"summaries":[
+
+{"infomation":"지선 4412 (신사중학교 > 강남역)",
+
+"startLocation":
+
+{"type":"BUSSTOP","id":"11230511001","name":"신사중학교","action":"GETON","actionName":"승차","x":504700.0,"y":1117840.0,"roadView":{"id":1094592350,"tilt":-10,"pan":-11,"zoom":0,"x":504705.0,"y":1117820.0,"signX":504705.0,"signY":1117820.0,"dir":"","fileName":"/2018/07/1024155/2_101019_1024155_20180722010042.jpg"},"realTime":true,"displayId":"23-102"},
+
+"endLocation":
+
+{"type":"BUSSTOP","id":"11220541012","name":"강남역","action":"GETOFF","actionName":"하차","x":505823.0,"y":1111270.0,"roadView":{"id":1094594671,"tilt":-10,"pan":-98,"zoom":0,"x":505851.0,"y":1111275.0,"signX":505851.0,"signY":1111275.0,"dir":"","fileName":"/2018/07/1024148/2_101788_1024148_20180721230312.jpg"},"realTime":true,"subwayExit":"10","displayId":"22-173"},"vehicles":[{"type":"BUS","id":"1100071626","subType":"GREEN","subTypeName":"지선","name":"4412","name1":"4412","visible":true,"runningCountPerHour":7.5,"runningTimeGrade":"A","startOrder":65}],"intervalCost":120}],
+
+"steps":[
+
+{"information":"신사중학교 출발","action":"DEPARTURE","actionName":"출발","startLocation":{"name":"신사중학교","confirmId":"7969050","x":504625.0,"y":1118100.0,"roadView":{"id":1094696577,"tilt":0,"pan":238,"zoom":0,"x":1261508.0,"y":2795383.0,"signX":1261508.0,"signY":2795383.0,"fileName":"/2018/07/1024170/2_101942_1024170_20180723044813.jpg"}}},
+
+{"information":"신사중학교정류장까지 도보로 이동","type":"WALKING","action":"MOVE","actionName":"이동","distance":{"value":251,"text":"251m","html":"<b>251</b>m"},"time":{"value":226,"text":"4분","html":"<b>4</b>분"},"startLocation":{"name":"신사중학교","x":504624.0,"y":1118100.0},"endLocation":{"type":"BUSSTOP","id":"11230511001","name":"신사중학교","x":504700.0,"y":1117840.0,"roadView":{"id":1094592350,"tilt":-10,"pan":-11,"zoom":0,"x":504705.0,"y":1117820.0,"signX":504705.0,"signY":1117820.0,"dir":"","fileName":"/2018/07/1024155/2_101019_1024155_20180722010042.jpg"},"realTime":true,"displayId":"23-102"},"polylineStart":{"x":504913.0,"y":1118018.0},"polylineEnd":{"x":504700.0,"y":1117838.0},"polyline":"504913|1118018|504932|1117985|504877|1117950|504700|1117838","walkingGuide":true},
+
+{"information":"신사중학교정류장 승차","type":"BUS","action":"GETON","actionName":"승차","distance":{"value":3153,"text":"3.2km","html":"<b>3.2</b>km"},"time":{"value":1046,"text":"17분","html":"<b>17</b>분"},"startLocation":{"type":"BUSSTOP","id":"11230511001","name":"신사중학교","x":504700.0,"y":1117840.0,"roadView":{"id":1094592350,"tilt":-10,"pan":-11,"zoom":0,"x":504705.0,"y":1117820.0,"signX":504705.0,"signY":1117820.0,"dir":"","fileName":"/2018/07/1024155/2_101019_1024155_20180722010042.jpg"},"realTime":true,"displayId":"23-102"},"endLocation":{"type":"BUSSTOP","id":"11220541012","name":"강남역","x":505823.0,"y":1111270.0,"roadView":{"id":1094594671,"tilt":-10,"pan":-98,"zoom":0,"x":505851.0,"y":1111275.0,"signX":505851.0,"signY":1111275.0,"dir":"","fileName":"/2018/07/1024148/2_101788_1024148_20180721230312.jpg"},"realTime":true,"displayId":"22-173"},
+
+"nodes":[{"type":"BUSSTOP","id":"11220551025","name":"신사역5번출구","x":504182.0,"y":1116038.0,"roadView":{"id":1094426707,"tilt":-10,"pan":-101,"zoom":0,"x":504212.0,"y":1116045.0,"signX":504212.0,"signY":1116045.0,"dir":"","fileName":"/2018/07/1024097/2_102098_1024097_20180718044214.jpg"},"realTime":true,"displayId":"22-186"},{"type":"BUSSTOP","id":"11230531008","name":"신사역4번출구","x":504325.0,"y":1115438.0,"roadView":{"id":1094593718,"tilt":-10,"pan":-114,"zoom":0,"x":504353.0,"y":1115452.0,"signX":504353.0,"signY":1115452.0,"dir":"","fileName":"/2018/07/1024148/2_101611_1024148_20180721225645.jpg"},"realTime":true,"displayId":"22-185"},{"type":"BUSSTOP","id":"11220571006","name":"논현역","x":504855.0,"y":1113807.0,"roadView":{"id":1094594104,"tilt":-10,"pan":-96,"zoom":0,"x":504890.0,"y":1113813.0,"signX":504890.0,"signY":1113813.0,"dir":"","fileName":"/2018/07/1024148/2_101680_1024148_20180721225908.jpg"},"realTime":true,"displayId":"22-191"},{"type":"BUSSTOP","id":"11220571012","name":"반포동","x":505195.0,"y":1112925.0,"roadView":{"id":1094594274,"tilt":-10,"pan":-108,"zoom":0,"x":505217.0,"y":1112933.0,"signX":505217.0,"signY":1112933.0,"dir":"","fileName":"/2018/07/1024148/2_101717_1024148_20180721230039.jpg"},"realTime":true,"displayId":"22-192"},{"type":"BUSSTOP","id":"11220541003","name":"신논현역.구교보타워사거리","x":505532.0,"y":1112033.0,"roadView":{"id":1094594494,"tilt":-10,"pan":-108,"zoom":0,"x":505546.0,"y":1112039.0,"signX":505546.0,"signY":1112039.0,"dir":"","fileName":"/2018/07/1024148/2_101755_1024148_20180721230227.jpg"},"realTime":true,"displayId":"22-172"}],"vehicles":[{"type":"BUS","id":"1100071626","subType":"GREEN","subTypeName":"지선","name":"4412","name1":"4412","visible":true,"runningCountPerHour":7.5,"runningTimeGrade":"A","startOrder":65}],"polylineStart":{"x":504701.0,"y":1117840.0},"polylineEnd":{"x":505823.0,"y":1111271.0},"polyline":"504701|1117840|504714|1117820|504708|1117816|504315|1117578|504218|1117516|503995|1117372|503845|1117277|503687|1117181|503633|1117148|503630|1117139|503635|1117103|503640|1117090|503688|1117017|503724|1116992|503772|1116973|503854|1116951|503920|1116929|503972|1116899|503997|1116880|504029|1116764|504055|1116654|504198|1116043|504184|1116040|504184|1116040|504198|1116043|504203|1116022|504228|1115913|504280|1115701|504325|1115516|504333|1115481|504343|1115444|504326|1115440|504326|1115440|504343|1115444|504410|1115179|504491|1114838|504674|1114350|504689|1114310|504872|1113815|504855|1113809|504855|1113809|504872|1113815|504872|1113814|505215|1112933|505195|1112926|505195|1112926|505215|1112933|505373|1112526|505393|1112478|505488|1112210|505551|1112042|505533|1112035|505533|1112035|505551|1112042|505727|1111569|505840|1111278|505823|1111271","runningCountPerHour":7.5,"runningTimeGrade":"A","intervalCost":240},
+
+{"information":"강남역정류장 하차","type":"BUS","action":"GETOFF","actionName":"하차","endLocation":{"type":"BUSSTOP","id":"11220541012","name":"강남역","x":505823.0,"y":1111270.0,"roadView":{"id":1094594671,"tilt":-10,"pan":-98,"zoom":0,"x":505851.0,"y":1111275.0,"signX":505851.0,"signY":1111275.0,"dir":"","fileName":"/2018/07/1024148/2_101788_1024148_20180721230312.jpg"},"realTime":true,"displayId":"22-173"}},
+
+{"information":"강남역 2호선까지 도보로 이동 (10번 출구)","type":"WALKING","action":"MOVE","actionName":"이동","distance":{"value":315,"text":"315m","html":"<b>315</b>m"},"time":{"value":322,"text":"5분","html":"<b>5</b>분"},"startLocation":{"type":"BUSSTOP","id":"11220541012","name":"강남역","x":505823.0,"y":1111270.0,"roadView":{"id":1094594671,"tilt":-10,"pan":-98,"zoom":0,"x":505851.0,"y":1111275.0,"signX":505851.0,"signY":1111275.0,"dir":"","fileName":"/2018/07/1024148/2_101788_1024148_20180721230312.jpg"},"realTime":true,"displayId":"22-173"},"endLocation":{"name":"강남역 2호선","x":506190.0,"y":1110730.0},"polylineStart":{"x":505823.0,"y":1111270.0},"polylineEnd":{"x":506188.0,"y":1110730.0},"polyline":"505823|1111270|505872|1111130|505875|1111120|505893|1111070|505897|1111062|505965|1110883|505975|1110860|506035|1110885|506110|1110698|506188|1110730","subwayExit":"10","walkingGuide":true},
+
+{"information":"강남역 2호선 도착","action":"ARRIVAL","actionName":"도착","endLocation":{"name":"강남역 2호선","confirmId":"0","x":506190.0,"y":1110730.0,"roadView":{"id":1093831654,"tilt":0,"pan":72,"zoom":0,"x":1265503.0,"y":2776770.0,"signX":1265503.0,"signY":2776770.0,"fileName":"/2018/07/1023877/2_102127_1023877_20180703022626.jpg"}}}
+
+]}
