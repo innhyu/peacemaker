@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import { connect } from "react-redux";
-import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 
 import Search from "./Search";
-import SearchResult from "./SearchResult";
+import Map from "./Map";
 
-class UserAddress extends Component {
+export default class UserAddress extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            id: uniqueId()
+        }
     }
 
     render() {
@@ -15,11 +18,10 @@ class UserAddress extends Component {
         return (
             <div style={styles.container}>
                 <div style={styles.innerContainer}>
-                    <Search />
-                    {/*<SearchResult searchResult={this.state.searchResults}/>*/}
-                    {/*<div style={styles.mapContainer}>*/}
-                        {/*<Map userNumber={this.props.userNumber} style={styles.map}/>*/}
-                    {/*</div>*/}
+                    <Search userId={this.state.id} />
+                    <div style={styles.mapContainer}>
+                        <Map userId={this.state.id} style={styles.map}/>
+                    </div>
                 </div>
             </div>
         )
@@ -48,17 +50,3 @@ const styles = {
     }
 
 };
-
-UserAddress.propTypes = {
-    // The unique identifying number for this particular instance
-    userNumber: PropTypes.number.isRequired
-};
-
-function mapStateToProps({keyword, searchResult}){
-    return{
-        ...keyword,
-        ...searchResult
-    }
-}
-
-export default connect(mapStateToProps)(UserAddress);
